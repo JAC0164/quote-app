@@ -1,0 +1,245 @@
+$primary-dark: #333;
+$secondary-dark: #4f4f4f;
+$tertiary-dark: #828282;
+$yellow: #f7df94;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 721px;
+  min-height: 100vh;
+  padding: 20px;
+  margin: 0 auto;
+  header {
+    display: flex;
+    padding: 31px 0;
+    margin-bottom: 50px;
+    justify-content: flex-end;
+    .random {
+      display: flex;
+      align-items: center;
+      color: $primary-dark;
+      font-size: 16px;
+      font-weight: 500;
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      &:hover {
+        span:nth-child(2) {
+          animation: rotate 0.5s linear;
+        }
+      }
+      span {
+        display: flex;
+        align-items: center;
+        margin: 0 5px;
+      }
+    }
+  }
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: auto;
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    padding: 7px 0;
+    margin-top: 50px;
+    color: $tertiary-dark;
+    font-weight: 500;
+    font-size: 14px;
+    a {
+      font-weight: 700;
+      margin: 0 2px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .loader,
+  .noQuoteFound {
+    color: $secondary-dark;
+    text-align: center;
+  }
+  .page-404 {
+    h1 {
+      margin-bottom: 10px;
+    }
+    h1,
+    p,
+    a {
+      color: $secondary-dark;
+      text-align: center;
+      font-weight: 500;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+  .toggleTrunc {
+    font-size: 14px;
+    color: $tertiary-dark;
+    cursor: pointer;
+    line-height: 0;
+  }
+  .content {
+    position: relative;
+    margin-bottom: 109px;
+    padding-left: 60px;
+    font-size: 18px;
+    font-weight: 500;
+    width: 95%;
+    animation: fadeInBottom 0.5s linear;
+  }
+
+  .content::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    background-color: $yellow;
+  }
+  .author {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    padding: 18px 12px;
+    padding-left: 60px;
+    animation: fadeInLeft 0.6s linear;
+    &:hover {
+      &::after {
+        content: '→';
+        position: absolute;
+        right: 50px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        color: white;
+        animation: bounce 2s infinite;
+      }
+      background-color: $primary-dark;
+      b {
+        color: white;
+      }
+    }
+    b {
+      font-size: 16px;
+      color: $secondary-dark;
+      margin-bottom: 6px;
+    }
+    span {
+      font-size: 12px;
+      color: $tertiary-dark;
+    }
+  }
+  .authorQuotes {
+    width: 100%;
+    h1 {
+      position: relative;
+      font-size: 20px;
+      margin-bottom: 70px;
+      color: $primary-dark;
+      padding-left: 60px;
+      animation: fadeInLeft 0.6s linear;
+    }
+  }
+  @media screen and (min-width: 425px) {
+    .content {
+      font-size: 20px;
+    }
+    .authorQuotes {
+      h1 {
+        font-size: 24px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 640px) {
+    .content {
+      font-size: 24px;
+    }
+    .authorQuotes {
+      h1 {
+        font-size: 28px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .content {
+      padding-left: 85px;
+      font-size: 28px;
+    }
+    .authorQuotes {
+      h1 {
+        font-size: 32px;
+        margin-bottom: 90px;
+        padding-left: 85px;
+      }
+    }
+    .author {
+      padding-left: 85px;
+      b {
+        font-size: 20px;
+        margin-bottom: 7px;
+      }
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@keyframes fadeInBottom {
+  from {
+    opacity: 0;
+    bottom: -30px;
+  }
+  to {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    left: -30px;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(0) translateY(-50%);
+  }
+  40% {
+    transform: translateX(-30px) translateY(-50%);
+  }
+  60% {
+    transform: translateX(-15px) translateY(-50%);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

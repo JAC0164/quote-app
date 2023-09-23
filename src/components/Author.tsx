@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import type { QuoteType } from '../../types/index';
 import { getQuotesByAuthor } from '../util/index';
 import Quote from './Quote';
+import { Loading } from './Loading';
 
 const Author = () => {
   const { name } = useParams<{ name: string }>();
@@ -12,7 +13,7 @@ const Author = () => {
   useEffect(() => {
     getQuotesByAuthor(name)
       .then((q) => {
-        setQuotes(q);
+        setQuotes(q.results);
         setLoad(false);
       })
       .catch((e) => {
@@ -25,25 +26,19 @@ const Author = () => {
   return (
     <div className="authorQuotes">
       {!load && quotes.length && (
-        <>
-          <h1>{name}</h1>
-          <>
-            {quotes?.map((q) => {
-              return <Quote quote={q.quote} />;
-            })}
-          </>
-        </>
+        <Fragment>
+          <h1 className="capitalize">{name.split('-').join(' ')}</h1>
+          {quotes?.map((q) => (
+            <Quote key={q._id} quote={q.content} />
+          ))}
+        </Fragment>
       )}
       {!load && !quotes.length && (
         <div>
           <h2 className="noQuoteFound">No results for “{name}”</h2>
         </div>
       )}
-      {load && (
-        <div>
-          <h2 className="loader">Loading...</h2>
-        </div>
-      )}
+      {load && <Loading />}
     </div>
   );
 };

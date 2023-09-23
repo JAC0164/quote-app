@@ -16,17 +16,17 @@ const App = () => {
     getQuote()
       .then((q) => {
         appContext?.dispatch(setQuote(q));
-        appContext?.dispatch(toggleQuoteLoad(false));
+        appContext?.dispatch(toggleQuoteLoad('finished'));
       })
       .catch((e) => {
         console.error(e);
-        appContext?.dispatch(toggleQuoteLoad(false));
+        appContext?.dispatch(toggleQuoteLoad('error'));
       });
   }, [appContext?.state.next]);
 
   const getNext = () => {
     appContext?.dispatch(setQuote(null));
-    appContext?.dispatch(toggleQuoteLoad(true));
+    appContext?.dispatch(toggleQuoteLoad('loading'));
     appContext?.dispatch(setNext(appContext.state.next + 1));
   };
 

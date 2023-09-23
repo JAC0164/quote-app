@@ -3,6 +3,10 @@ $secondary-dark: #4f4f4f;
 $tertiary-dark: #828282;
 $yellow: #f7df94;
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .container {
   display: flex;
   flex-direction: column;

@@ -6,11 +6,11 @@ import type { QuoteType } from 'types';
 const QuoteContainer: FC<{ quote: QuoteType }> = ({ quote }) => {
   return (
     <div className="quote">
-      <Quote quote={quote.quote} />
-      <Link to={`author/${quote.character}`}>
+      <Quote quote={quote.content} />
+      <Link to={`author/${quote.authorSlug}`}>
         <p className="author">
-          <b>{quote.character}</b>
-          <span>{quote.anime}</span>
+          <b>{quote.author}</b>
+          <span>{quote.tags.join(' - ')}</span>
         </p>
       </Link>
     </div>

@@ -1,6 +1,6 @@
-import type { QuoteType } from 'types';
+import type { QuoteType, QuotesType } from 'types';
 
-const baseApiUrl = 'https://animechan.vercel.app/api';
+const baseApiUrl = 'https://api.quotable.io';
 
 export const getQuote = async (): Promise<QuoteType> => {
   const res = await fetch(`${baseApiUrl}/random`);
@@ -9,7 +9,7 @@ export const getQuote = async (): Promise<QuoteType> => {
 
 export const getQuotesByAuthor = async (
   author: string,
-): Promise<QuoteType[]> => {
-  const res = await fetch(`${baseApiUrl}/quotes/character?name=${author}`);
+): Promise<QuotesType> => {
+  const res = await fetch(`${baseApiUrl}/quotes?author=${author}`);
   return await res.json();
 };

@@ -1,4 +1,4 @@
-import type { AppAction, QuoteType } from '../../types/index';
+import type { AppAction, AppState, QuoteType } from '../../types/index';
 
 export const actions = {
   SET_QUOTE: 'set-quote',
@@ -11,7 +11,7 @@ export const setQuote = (value: QuoteType | null): AppAction => ({
   value,
 });
 
-export const toggleQuoteLoad = (value: boolean): AppAction => ({
+export const toggleQuoteLoad = (value: AppState['loadQuote']): AppAction => ({
   type: actions.TOGGLE_QUOTE_LOAD,
   value,
 });
